@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="100%" height="auto">
+  <rect width="1000" height="420" rx="16" fill="#0b1120"/>
+  <text x="50" y="55" font-family="sans-serif" font-size="24" font-weight="800" fill="#64ffda">FULL-DUPLEX DEBATE &amp; VIDEO PIPELINE (NVIDIA PERSONAPLEX 7B)</text>
+  <text x="50" y="80" font-family="sans-serif" font-size="14" fill="#94a3b8">Dual-channel Mimi 24kHz audio tokenization, stereo FFT spectrum extraction, and 1080p H.264 rendering</text>
+
+  <g transform="translate(50, 120)">
+    <rect width="260" height="240" rx="12" fill="#0f172a" stroke="#64ffda" stroke-width="1.5"/>
+    <text x="20" y="35" font-family="sans-serif" font-size="15" font-weight="700" fill="#64ffda">1. NVIDIA PersonaPlex 7B</text>
+    <text x="20" y="68" font-family="sans-serif" font-size="12" fill="#e2e8f0">• 18 Voice Embeddings (.pt)</text>
+    <text x="20" y="92" font-family="sans-serif" font-size="12" fill="#e2e8f0">• &lt;system&gt; Persona Conditioning</text>
+    <text x="20" y="116" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Mimi Neural Audio Codec (24kHz)</text>
+    <text x="20" y="140" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Left Ch: Caller | Right Ch: AI</text>
+    <text x="20" y="164" font-family="sans-serif" font-size="12" fill="#94a3b8">• ~180ms Full-Duplex Turn Latency</text>
+  </g>
+
+  <g transform="translate(370, 120)">
+    <rect width="260" height="240" rx="12" fill="#0f172a" stroke="#a3e635" stroke-width="1.5"/>
+    <text x="20" y="35" font-family="sans-serif" font-size="15" font-weight="700" fill="#a3e635">2. Stereo FFT Telemetry</text>
+    <text x="20" y="68" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Independent L/R PCM Demux</text>
+    <text x="20" y="92" font-family="sans-serif" font-size="12" fill="#e2e8f0">• 16-Band Hanning FFT Spectrum</text>
+    <text x="20" y="116" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Simultaneous Overlap Detector</text>
+    <text x="20" y="140" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Backchannel &amp; Barge-in Counter</text>
+    <text x="20" y="164" font-family="sans-serif" font-size="12" fill="#94a3b8">• Frame-exact 24/30 FPS Sync</text>
+  </g>
+
+  <g transform="translate(690, 120)">
+    <rect width="260" height="240" rx="12" fill="#0f172a" stroke="#f97316" stroke-width="1.5"/>
+    <text x="20" y="35" font-family="sans-serif" font-size="15" font-weight="700" fill="#f97316">3. HD MP4 Studio Engine</text>
+    <text x="20" y="68" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Dual Reactive Equalizer Cards</text>
+    <text x="20" y="92" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Pulsing Speaker Status Rings</text>
+    <text x="20" y="116" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Live Overlap Alert HUD</text>
+    <text x="20" y="140" font-family="sans-serif" font-size="12" fill="#e2e8f0">• Dynamic Subtitles &amp; Prompt Bar</text>
+    <text x="20" y="164" font-family="sans-serif" font-size="12" fill="#94a3b8">• H.264 + AAC Faststart MP4</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ranuk-ai-debate-studio"
+version = "0.1.0"
+description = "Full-Duplex Multi-Agent Debate & Broadcast MP4 Video Studio powered by NVIDIA PersonaPlex 7B"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Ranuk IT Solutions", email = "contact@ranuk.dev" },
+  { name = "Emilio Ranucoli", email = "emilio@ranuk.dev" }
+]
+dependencies = [
+  "numpy>=1.24.0",
+  "Pillow>=10.0.0"
+]
+
+[project.urls]
+Homepage = "https://ranuk.dev"
+Repository = "https://github.com/RanuK12/ranuk-ai-debate-studio"
