@@ -9,31 +9,31 @@
   },
   {
     "start": 6.903,
-    "end": 14.473,
+    "end": 14.815,
     "speaker": "B",
     "speaker_name": "Valeria Soto",
     "tag": "INTERRUPCIÓN FULL-DUPLEX",
     "text": "¡Un segundo, Diego! Eso funciona hasta que te cambian el precio, te bloquean por límite de tokens o auditan tus datos confidenciales."
   },
   {
-    "start": 14.203,
-    "end": 18.136,
+    "start": 14.545,
+    "end": 18.478,
     "speaker": "A",
     "speaker_name": "Diego Morales",
     "tag": "OBJECIÓN DE HARDWARE",
     "text": "Bueno, pero antes necesitabas un clúster entero para igualar la calidad—"
   },
   {
-    "start": 17.776,
-    "end": 25.438,
+    "start": 18.118,
+    "end": 26.196,
     "speaker": "B",
     "speaker_name": "Valeria Soto",
     "tag": "DATO TÉCNICO CLAVE",
     "text": "—Ya no. Hoy un modelo especializado de siete mil millones de parámetros como PersonaPlex corre voz full-duplex en tiempo real con privacidad total."
   },
   {
-    "start": 25.298,
-    "end": 30.465,
+    "start": 26.056,
+    "end": 31.222,
     "speaker": "A",
     "speaker_name": "Diego Morales",
     "tag": "SÍNTESIS",

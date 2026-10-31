@@ -236,8 +236,9 @@ HOT_DEBATE_SCRIPTS: Dict[str, Tuple[DebateScenario, List[DialogueTurn], str]] = 
             ),
             DialogueTurn(
                 speaker="B",
-                voice="es-ES-ElviraNeural",
-                rate="+9%",
+                voice="es-MX-DaliaNeural",
+                rate="+8%",
+                pitch="+2Hz",
                 text="¡Un segundo, Diego! Eso funciona hasta que te cambian el precio, te bloquean por límite de tokens o auditan tus datos confidenciales.",
                 overlap_prev_ms=500,
                 tag="INTERRUPCIÓN FULL-DUPLEX",
@@ -252,8 +253,9 @@ HOT_DEBATE_SCRIPTS: Dict[str, Tuple[DebateScenario, List[DialogueTurn], str]] = 
             ),
             DialogueTurn(
                 speaker="B",
-                voice="es-ES-ElviraNeural",
-                rate="+9%",
+                voice="es-MX-DaliaNeural",
+                rate="+8%",
+                pitch="+2Hz",
                 text="—Ya no. Hoy un modelo especializado de siete mil millones de parámetros como PersonaPlex corre voz full-duplex en tiempo real con privacidad total.",
                 overlap_prev_ms=480,
                 tag="DATO TÉCNICO CLAVE",
