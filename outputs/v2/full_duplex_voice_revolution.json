@@ -1,0 +1,42 @@
+[
+  {
+    "start": 0.35,
+    "end": 10.093,
+    "speaker": "A",
+    "speaker_name": "Marcus Vance",
+    "tag": "LEGACY BOT PROBLEM",
+    "text": "For the last five years, every enterprise voice bot felt like talking over a broken walkie-talkie. You speak, wait two seconds of awkward silence, and hope it didn't reset."
+  },
+  {
+    "start": 9.693,
+    "end": 17.32,
+    "speaker": "B",
+    "speaker_name": "Aria Chen",
+    "tag": "LIVE INTERRUPT (180ms)",
+    "text": "Hold on, Marcus—notice how I just jumped in mid-thought without breaking the stream? That happens because we eliminated the text bottleneck completely."
+  },
+  {
+    "start": 17.05,
+    "end": 20.829,
+    "speaker": "A",
+    "speaker_name": "Marcus Vance",
+    "tag": "BACKCHANNEL + SETUP",
+    "text": "Right, because when you stream neural audio tokens at twenty-four kilohertz—"
+  },
+  {
+    "start": 20.479,
+    "end": 30.198,
+    "speaker": "B",
+    "speaker_name": "Aria Chen",
+    "tag": "FULL-DUPLEX OVERLAP",
+    "text": "—the model listens and speaks simultaneously on dual channels. It hears your hesitation, adapts its persona instantly, and closes real B2B deals."
+  },
+  {
+    "start": 30.058,
+    "end": 36.174,
+    "speaker": "A",
+    "speaker_name": "Marcus Vance",
+    "tag": "VERDICT",
+    "text": "Once a customer experiences zero-latency turn-taking, legacy voice menus are officially dead."
+  }
+]

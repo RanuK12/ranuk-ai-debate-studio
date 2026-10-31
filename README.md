@@ -1,13 +1,13 @@
 <div align="center">
 
-<img src="assets/ranuk-logo.svg" alt="Ranuk IT Solutions" width="340" />
+<img src="assets/brand/minilogo.png" alt="Ranuk IT Solutions" width="120" />
 
-# Ranuk AI Debate Studio
-### Full-Duplex Multi-Agent Debate & Broadcast Video Engine powered by NVIDIA PersonaPlex 7B
+# Ranuk AI Debate Studio (`v0.2.0`)
+### Next-Gen Glassmorphic Full-Duplex Debate & Broadcast Video Engine powered by NVIDIA PersonaPlex 7B
 
-[![Version](https://img.shields.io/badge/version-0.1.0-64ffda.svg?style=for-the-badge)](pyproject.toml)
+[![Version](https://img.shields.io/badge/version-0.2.0-00f0ff.svg?style=for-the-badge)](pyproject.toml)
 [![NVIDIA PersonaPlex](https://img.shields.io/badge/NVIDIA-PersonaPlex_7B_(Moshi)-76b900.svg?style=for-the-badge&logo=nvidia)](https://github.com/NVIDIA/personaplex)
-[![Full Duplex](https://img.shields.io/badge/Audio-24kHz_Stereo_Full--Duplex-f97316.svg?style=for-the-badge)](ranuk_debate_studio/waveform_analyzer.py)
+[![Full Duplex](https://img.shields.io/badge/Audio-24kHz_Stereo_Full--Duplex-10b981.svg?style=for-the-badge)](ranuk_debate_studio/waveform_analyzer.py)
 [![License](https://img.shields.io/badge/License-Apache_2.0-818cf8.svg?style=for-the-badge)](LICENSE)
 
 <br/>
@@ -28,11 +28,21 @@ Unlike sequential Text-to-Speech (TTS) podcast generators where speakers wait po
 
 ---
 
-## 📸 Rendered Broadcast Frame Preview
+## 📸 3 Broadcast Video Layouts (`v0.2.0` Neon Glass UI)
 
+### 1. `glass_studio` (16:9 HD — Floating Glass Pods, 3D Ranuk Emblem & 32-Band Mirrored Spectrums)
 <div align="center">
-  <img src="assets/video-preview.png" alt="Rendered Full-Duplex Video Frame" width="100%" />
-  <p><em>Actual frame rendered from <code>mars_reactor_crisis.mp4</code> at <code>t = 12.80s</code> showing simultaneous Left &amp; Right channel vocalization and the live Full-Duplex Overlap alert HUD.</em></p>
+  <img src="assets/preview_glass_studio.png" alt="Neon Glass Studio 16:9 Layout" width="100%" />
+</div>
+
+### 2. `split_wave` (16:9 HD — Minimalist Executive 64-Band Mirrored Acoustic Spine)
+<div align="center">
+  <img src="assets/preview_split_wave.png" alt="Split Wave Executive Arena Layout" width="100%" />
+</div>
+
+### 3. `vertical_reel` (9:16 1080×1920 — Viral Mobile Reel for Reddit, X, Shorts & TikTok)
+<div align="center">
+  <img src="assets/preview_vertical_reel.png" alt="Vertical Reel 9:16 Layout" width="420" />
 </div>
 
 ---

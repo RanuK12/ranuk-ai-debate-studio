@@ -1,0 +1,42 @@
+[
+  {
+    "start": 0.35,
+    "end": 8.347,
+    "speaker": "A",
+    "speaker_name": "Mateo Vega",
+    "tag": "POSTURA CRÍTICA",
+    "text": "Seamos realistas, Sofía: hoy todos hablan de agentes que programan solos, pero cuando un banco cae a las tres de la mañana, ningún modelo asume la culpa."
+  },
+  {
+    "start": 7.947,
+    "end": 18.108,
+    "speaker": "B",
+    "speaker_name": "Sofía Kovács",
+    "tag": "INTERRUPCIÓN FULL-DUPLEX",
+    "text": "¡Espera, Mateo! Ese era el debate de hace dos años. Hoy un enjambre de agentes detecta el fallo, valida el árbol sintáctico y despliega el parche en segundos."
+  },
+  {
+    "start": 17.848,
+    "end": 21.29,
+    "speaker": "A",
+    "speaker_name": "Mateo Vega",
+    "tag": "CONTRAARGUMENTO",
+    "text": "Claro, hasta que alucinan una librería que no existe y rompen producción—"
+  },
+  {
+    "start": 20.93,
+    "end": 29.933,
+    "speaker": "B",
+    "speaker_name": "Sofía Kovács",
+    "tag": "SOLAPAMIENTO EN VIVO",
+    "text": "—Por eso no les das acceso ciego: les pones pruebas deterministas y auditoría automática. El ingeniero no desaparece, pasa a dirigir veinte agentes."
+  },
+  {
+    "start": 29.793,
+    "end": 35.44,
+    "speaker": "A",
+    "speaker_name": "Mateo Vega",
+    "tag": "CONSENSO EJECUTIVO",
+    "text": "En eso coincido al cien por ciento: muere el picador de código, pero nace el arquitecto de sistemas autónomos."
+  }
+]

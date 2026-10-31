@@ -1,0 +1,42 @@
+[
+  {
+    "start": 0.35,
+    "end": 8.504,
+    "speaker": "A",
+    "speaker_name": "Lucas Ferrara",
+    "tag": "RIESGO FINANCIERO",
+    "text": "Darle una billetera cripto autónoma a una inteligencia artificial parece un riesgo enorme. ¿Qué pasa si un bot gasta diez mil dólares por un bucle infinito?"
+  },
+  {
+    "start": 8.084,
+    "end": 16.615,
+    "speaker": "B",
+    "speaker_name": "Elena R.",
+    "tag": "INTERRUPCIÓN EN VIVO",
+    "text": "Pará, pará, Lucas—¿y cómo pensás que un agente va a comprar cómputo o datos en tiempo real? ¿Pidéndole permiso al banco un viernes a la noche?"
+  },
+  {
+    "start": 16.325,
+    "end": 19.886,
+    "speaker": "A",
+    "speaker_name": "Lucas Ferrara",
+    "tag": "RÉPLICA RÁPIDA",
+    "text": "No digo pedir permiso manual, pero tiene que existir un límite estricto—"
+  },
+  {
+    "start": 19.516,
+    "end": 29.414,
+    "speaker": "B",
+    "speaker_name": "Elena R.",
+    "tag": "FULL-DUPLEX OVERLAP",
+    "text": "—¡Ese límite está programado en el contrato! Con el protocolo x402 en Base, el agente paga centavos de USDC por cada llamada verificada en milisegundos."
+  },
+  {
+    "start": 29.254,
+    "end": 34.368,
+    "speaker": "A",
+    "speaker_name": "Lucas Ferrara",
+    "tag": "CONCLUSIÓN CLAVE",
+    "text": "Ahí cambia todo: pasamos de pagar suscripciones mensuales infladas a micro-pagos exactos entre máquinas."
+  }
+]

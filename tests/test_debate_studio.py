@@ -6,6 +6,7 @@ import pytest
 
 from ranuk_debate_studio import (
     ALL_PERSONAPLEX_VOICES,
+    HOT_DEBATE_SCRIPTS,
     PRESET_SCENARIOS,
     analyze_stereo_stream,
     build_offline_command,
@@ -63,3 +64,14 @@ def test_analyze_stereo_stream_on_sample():
         frames = analyze_stereo_stream(sample, fps=10, max_duration_sec=5.0)
         assert len(frames) >= 40
         assert any(f.left_speaking or f.right_speaking for f in frames)
+
+
+def test_hot_debate_scripts_defined():
+    assert "ia_vs_ingenieros_2026" in HOT_DEBATE_SCRIPTS
+    assert "economia_x402_billeteras_ia" in HOT_DEBATE_SCRIPTS
+    assert "full_duplex_voice_revolution" in HOT_DEBATE_SCRIPTS
+    assert "open_vs_closed_ai_2026" in HOT_DEBATE_SCRIPTS
+    for slug, (sc, turns, style) in HOT_DEBATE_SCRIPTS.items():
+        assert len(turns) >= 4
+        assert style in ("glass_studio", "vertical_reel", "split_wave")
+        assert any(t.overlap_prev_ms > 0 for t in turns)

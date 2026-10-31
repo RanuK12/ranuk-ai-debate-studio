@@ -14,10 +14,11 @@ from .personaplex_duo import (
     validate_voice_prompt,
     wrap_system_prompt,
 )
+from .duplex_dialogue_synth import DialogueTurn, HOT_DEBATE_SCRIPTS, synthesize_duplex_debate
 from .video_renderer import render_debate_video
 from .waveform_analyzer import FrameAudioTelemetry, analyze_stereo_stream, compute_16_bands
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
     "ALL_PERSONAPLEX_VOICES",
     "NATURAL_FEMALE_VOICES",
@@ -25,6 +26,9 @@ __all__ = [
     "VARIETY_FEMALE_VOICES",
     "VARIETY_MALE_VOICES",
     "PRESET_SCENARIOS",
+    "HOT_DEBATE_SCRIPTS",
+    "DialogueTurn",
+    "synthesize_duplex_debate",
     "DebateScenario",
     "build_offline_command",
     "validate_voice_prompt",
