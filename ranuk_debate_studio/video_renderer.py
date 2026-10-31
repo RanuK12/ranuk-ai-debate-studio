@@ -222,19 +222,20 @@ def _active_caption(scenario: DebateScenario, t_sec: float) -> Tuple[str, str, s
         e = float(cap.get("end", 0.0))
         if s <= t_sec <= e:
             active = cap
+            break
     if active is None and scenario.captions:
         preceding = [c for c in scenario.captions if float(c.get("start", 0.0)) <= t_sec]
         active = preceding[-1] if preceding else scenario.captions[0]
 
     if active is None:
-        return ("B", scenario.speaker_b_name, "FULL-DUPLEX STREAM", "Live Speech-to-Speech Stream Active", 0.5)
+        return ("B", scenario.speaker_b_name, "LIVE ON-AIR", "Full-Duplex Speech-to-Speech Active", 0.5)
 
     s = float(active.get("start", 0.0))
     e = max(s + 0.1, float(active.get("end", s + 1.0)))
     prog = min(1.0, max(0.0, (t_sec - s) / (e - s)))
     spk = str(active.get("speaker", "B"))
     spk_name = str(active.get("speaker_name", scenario.speaker_a_name if spk == "A" else scenario.speaker_b_name))
-    tag = str(active.get("tag", "EN VIVO"))
+    tag = str(active.get("tag", "LIVE ON-AIR"))
     text = str(active.get("text", "")).strip()
     return (spk, spk_name, tag, text, prog)
 
@@ -406,9 +407,15 @@ def render_debate_video(
                 # Subtitle Stage
                 sub_y0, sub_y1 = 1120, 1740
                 _draw_apple_frosted_card(draw, (54, sub_y0, width - 54, sub_y1), radius=32, fill_alpha=185, is_active=True, active_color=active_col)
-                draw.rounded_rectangle([90, sub_y0 + 36, 380, sub_y0 + 82], radius=23, fill=(*active_col, 32), outline=(*active_col, 180), width=1)
-                draw.text((114, sub_y0 + 48), spk_name.upper(), fill=(255, 255, 255, 255), font=f_island)
-                draw.text((404, sub_y0 + 48), f"•  {turn_tag}", fill=(*active_col, 240), font=f_island)
+                
+                name_text = spk_name.upper()
+                bbox_name = draw.textbbox((0, 0), name_text, font=f_island)
+                name_w = bbox_name[2] - bbox_name[0]
+                pill_x0 = 90
+                pill_x1 = pill_x0 + name_w + 36
+                draw.rounded_rectangle([pill_x0, sub_y0 + 36, pill_x1, sub_y0 + 82], radius=23, fill=(*active_col, 32), outline=(*active_col, 180), width=1)
+                draw.text((pill_x0 + 18, sub_y0 + 48), name_text, fill=(255, 255, 255, 255), font=f_island)
+                draw.text((pill_x1 + 18, sub_y0 + 48), f"•  {turn_tag}", fill=(*active_col, 240), font=f_island)
 
                 wrapped = textwrap.wrap(f"“{cap_text}”", width=38)[:6]
                 cy_t = sub_y0 + 120
@@ -459,7 +466,7 @@ def render_debate_video(
                 draw.text((166, 212), scenario.speaker_a_name, fill=(255, 255, 255, 255), font=f_speaker)
                 draw.text((166, 242), scenario.speaker_a_role, fill=(156, 163, 175, 220), font=f_role)
                 draw.rounded_rectangle([166, 268, 330, 292], radius=12, fill=(0, 240, 255, 24), outline=(0, 240, 255, 120), width=1)
-                draw.text((178, 273), "● CANAL IZQUIERDO (FL)", fill=(165, 243, 252, 255), font=f_status)
+                draw.text((178, 273), "● LEFT AUDIO CHANNEL (FL)", fill=(165, 243, 252, 255), font=f_status)
 
                 _draw_apple_music_waveform(draw, 84, 408, 24, bar_width=12, bar_gap=8, bands=smooth_l_bands, speaking=frame.left_speaking, color_top=col_a, color_bot=col_a_sub, max_height=65)
 
@@ -470,7 +477,7 @@ def render_debate_video(
                 draw.text((width - 54 - card_w + 112, 212), scenario.speaker_b_name, fill=(255, 255, 255, 255), font=f_speaker)
                 draw.text((width - 54 - card_w + 112, 242), scenario.speaker_b_role, fill=(156, 163, 175, 220), font=f_role)
                 draw.rounded_rectangle([width - 54 - card_w + 112, 268, width - 54 - card_w + 276, 292], radius=12, fill=(16, 235, 155, 24), outline=(16, 235, 155, 120), width=1)
-                draw.text((width - 54 - card_w + 124, 273), "● CANAL DERECHO (FR)", fill=(167, 243, 208, 255), font=f_status)
+                draw.text((width - 54 - card_w + 124, 273), "● RIGHT AUDIO CHANNEL (FR)", fill=(167, 243, 208, 255), font=f_status)
 
                 _draw_apple_music_waveform(draw, width - 54 - card_w + 30, 408, 24, bar_width=12, bar_gap=8, bands=smooth_r_bands, speaking=frame.right_speaking, color_top=col_b, color_bot=col_b_sub, max_height=65)
 
