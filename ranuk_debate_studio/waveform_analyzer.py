@@ -41,6 +41,11 @@ def find_ffmpeg() -> str:
 
 def decode_stereo_pcm(audio_path: Path, sample_rate: int = 24000, max_duration_sec: Optional[float] = None) -> Tuple[np.ndarray, np.ndarray, int]:
     """Decode any audio file (.mp3, .wav, .ogg) into stereo float32 arrays (left, right)."""
+    p = Path(audio_path)
+    if not p.exists():
+        raise FileNotFoundError(f"PCM decode target audio does not exist: {p.resolve()}")
+    if p.stat().st_size == 0:
+        raise ValueError(f"PCM decode target audio is empty (0 bytes): {p.resolve()}")
     ffmpeg = find_ffmpeg()
     cmd = [
         ffmpeg,

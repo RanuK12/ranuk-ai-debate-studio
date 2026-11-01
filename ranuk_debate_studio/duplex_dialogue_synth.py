@@ -20,7 +20,7 @@ from typing import Dict, List, Optional, Tuple
 import edge_tts
 import numpy as np
 
-from .personaplex_duo import DebateScenario
+from .personaplex_duo import DebateScenario, PRESET_SCENARIOS
 from .waveform_analyzer import find_ffmpeg
 
 
@@ -271,6 +271,173 @@ HOT_DEBATE_SCRIPTS: Dict[str, Tuple[DebateScenario, List[DialogueTurn], str]] = 
         ],
         "split_wave",
     ),
+    "mars_reactor_crisis": (
+        DebateScenario(
+            slug="mars_reactor_crisis",
+            title="MARS REACTOR EMERGENCY: 24kHz FULL-DUPLEX",
+            subtitle="Astronaut Alex vs. Mission Control • Unscripted Acoustic Turn-Taking",
+            speaker_a_name="Flight Director",
+            speaker_a_role="Ground Support • Houston Mission Control",
+            speaker_b_name="Astronaut Alex",
+            speaker_b_role="Mars Transit Vessel • Core Commander",
+            voice_prompt="VARM0.pt",
+            system_prompt="High-stress technical dialogue between astronaut and ground control during a reactor meltdown.",
+            sample_audio="mars_reactor_crisis.wav",
+            captions=[],
+        ),
+        [
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-ChristopherNeural",
+                rate="+10%",
+                text="Houston, we have a critical runaway on the primary coolant loop! Core temp is spiking past twelve hundred degrees!",
+                overlap_prev_ms=0,
+                tag="EMERGENCY ALERT",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-AndrewMultilingualNeural",
+                rate="+8%",
+                text="Copy that, Alex, telemetry confirms thermal surge. We're initiating magnetic bypass—",
+                overlap_prev_ms=350,
+                tag="MISSION CONTROL ACK",
+            ),
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-ChristopherNeural",
+                rate="+12%",
+                pitch="+2Hz",
+                text="Negative on the bypass! Valves three and four are completely unresponsive! If we don't vent the secondary manifold in thirty seconds, the containment housing is going to rupture!",
+                overlap_prev_ms=520,
+                tag="INTERRUPTION (URGENT)",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-AndrewMultilingualNeural",
+                rate="+9%",
+                text="Understood, manual vent sequence is unlocked on panel delta. Vent now, Alex!",
+                overlap_prev_ms=420,
+                tag="AUTHORIZATION OVERLAP",
+            ),
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-ChristopherNeural",
+                rate="+8%",
+                text="Venting manifold... Pressure dropping back to nominal. We just saved the ship.",
+                overlap_prev_ms=300,
+                tag="CRISIS RESOLVED",
+            ),
+        ],
+        "split_wave",
+    ),
+    "banking_b2b_closer": (
+        DebateScenario(
+            slug="banking_b2b_closer",
+            title="AI B2B ENTERPRISE VOICE CLOSER",
+            subtitle="Real-Time Fraud Interception with Zero Turn-Taking Latency",
+            speaker_a_name="James Hammer",
+            speaker_a_role="Cardholder • $1,200 Declined Checkout",
+            speaker_b_name="Sanni Virtanen",
+            speaker_b_role="AI Security Specialist • First Neuron Bank",
+            voice_prompt="VARF1.pt",
+            system_prompt="Enterprise fraud desk scenario resolving card decline in real-time.",
+            sample_audio="banking_b2b_closer.wav",
+            captions=[],
+        ),
+        [
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-BrianNeural",
+                rate="+7%",
+                text="Hey, I'm stuck at Home Depot trying to buy a contractor toolset and my corporate card was just declined.",
+                overlap_prev_ms=0,
+                tag="CUSTOMER PROBLEM",
+            ),
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-AvaMultilingualNeural",
+                rate="+8%",
+                text="I'm right here with you, James. Looking up your account right now. Can you confirm your date of birth?",
+                overlap_prev_ms=450,
+                tag="INSTANT AGENT RESPONSE",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-BrianNeural",
+                rate="+8%",
+                text="March 7, 1982. The purchase is twelve hundred dollars—",
+                overlap_prev_ms=300,
+                tag="USER CONFIRMATION",
+            ),
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-AvaMultilingualNeural",
+                rate="+8%",
+                text="—Got it! The flag triggered because the attempt was in Miami while your usual billing is Seattle. I just authorized the transaction; swipe again in five seconds!",
+                overlap_prev_ms=500,
+                tag="REAL-TIME RESOLUTION",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-BrianNeural",
+                rate="+8%",
+                text="It went through! That was insanely fast. Thanks!",
+                overlap_prev_ms=380,
+                tag="SUCCESS",
+            ),
+        ],
+        "split_wave",
+    ),
+    "interruption_benchmark": (
+        DebateScenario(
+            slug="interruption_benchmark",
+            title="CAN YOU INTERRUPT AN AI MID-SENTENCE?",
+            subtitle="Testing Sub-200ms Acoustic Interruption with PersonaPlex 7B",
+            speaker_a_name="Marcus Reed",
+            speaker_a_role="Voice AI Benchmark Engineer",
+            speaker_b_name="Aria (PersonaPlex)",
+            speaker_b_role="24kHz Full-Duplex Neural Voice Agent",
+            voice_prompt="NATF2.pt",
+            system_prompt="Voice AI benchmark testing instantaneous acoustic interruption without broken audio buffers.",
+            sample_audio="interruption_benchmark.wav",
+            captions=[],
+        ),
+        [
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-AvaMultilingualNeural",
+                rate="+8%",
+                text="When building full-duplex agents, traditional systems rely on silence detection after you speak, which creates an unavoidable—",
+                overlap_prev_ms=0,
+                tag="AGENT EXPLANATION",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-AndrewMultilingualNeural",
+                rate="+9%",
+                text="Wait, Aria, stop right there! Did you hear me interrupt you just now?",
+                overlap_prev_ms=650,
+                tag="USER INTERRUPT (LIVE)",
+            ),
+            DialogueTurn(
+                speaker="B",
+                voice="en-US-AvaMultilingualNeural",
+                rate="+9%",
+                text="Yes, perfectly! I paused the generation buffer in one hundred and eighty milliseconds. No robotic stutter, no buffer delay.",
+                overlap_prev_ms=480,
+                tag="INSTANT RECOVERY",
+            ),
+            DialogueTurn(
+                speaker="A",
+                voice="en-US-AndrewMultilingualNeural",
+                rate="+8%",
+                text="That's the difference between legacy IVR and true conversational intelligence.",
+                overlap_prev_ms=320,
+                tag="BENCHMARK VERDICT",
+            ),
+        ],
+        "split_wave",
+    ),
 }
 
 
@@ -333,10 +500,27 @@ def synthesize_duplex_debate(
       - Turns with `overlap_prev_ms > 0` start while the other speaker is still talking,
         producing genuine full-duplex overlapping audio and exact millisecond captions.
     """
-    if slug not in HOT_DEBATE_SCRIPTS:
-        raise KeyError(f"Unknown debate slug '{slug}'. Available: {list(HOT_DEBATE_SCRIPTS)}")
-
-    base_scenario, turns, preferred_style = HOT_DEBATE_SCRIPTS[slug]
+    if slug in HOT_DEBATE_SCRIPTS:
+        base_scenario, turns, preferred_style = HOT_DEBATE_SCRIPTS[slug]
+    elif slug in PRESET_SCENARIOS:
+        base_scenario = PRESET_SCENARIOS[slug]
+        turns = []
+        for cap in base_scenario.captions:
+            spk = cap.get("speaker", "A")
+            v = "en-US-AndrewMultilingualNeural" if spk == "A" else "en-US-AvaMultilingualNeural"
+            turns.append(
+                DialogueTurn(
+                    speaker=spk,
+                    voice=v,
+                    rate="+8%",
+                    text=cap.get("text", ""),
+                    overlap_prev_ms=250 if len(turns) > 0 else 0,
+                    tag=f"SPEAKER {spk}",
+                )
+            )
+        preferred_style = "split_wave"
+    else:
+        raise KeyError(f"Unknown debate slug '{slug}'. Available: {list(HOT_DEBATE_SCRIPTS.keys()) + list(PRESET_SCENARIOS.keys())}")
     output_wav.parent.mkdir(parents=True, exist_ok=True)
     meta_json = output_wav.with_suffix(".json")
     if output_wav.exists() and meta_json.exists() and output_wav.stat().st_size > 10000:
