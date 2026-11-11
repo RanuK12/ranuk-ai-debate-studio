@@ -17,7 +17,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-import edge_tts
+try:
+    import edge_tts
+except ImportError:
+    edge_tts = None
 import numpy as np
 
 from .personaplex_duo import DebateScenario, PRESET_SCENARIOS
