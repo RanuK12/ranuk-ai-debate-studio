@@ -764,8 +764,9 @@ def render_debate_video(
     width: int = 1280,
     height: int = 720,
     style: str = "glass_studio",
+    cover_intro_frames: int = 12,
 ) -> Path:
-    """Render broadcast MP4 video with 4 rotating vertical models and guaranteed karaoke subtitles."""
+    """Render broadcast MP4 video with 4 rotating vertical models, Frame 0 master cover, and guaranteed karaoke subtitles."""
     is_vert = style in ("vertical_reel",) or style in VERTICAL_UI_MODELS or (height > width)
     if is_vert and width == 1280 and height == 720:
         width, height = 1080, 1920
@@ -788,6 +789,29 @@ def render_debate_video(
     base_bg = _create_model_background(width, height, model_key=model_key)
     logo_header = _load_ranuk_apple_logo(size=56 if is_vert else 38)
     logo_footer = _load_ranuk_apple_logo(size=38)
+
+    # Master cover generation for Frame 0 & first 0.5s hook
+    cover_raw_bytes: Optional[bytes] = None
+    if is_vert and cover_intro_frames > 0:
+        try:
+            from .cover_generator import generate_debate_cover
+            cover_tmp = output_mp4.parent / f"{output_mp4.stem}_master_cover.png"
+            generate_debate_cover(
+                title=scenario.title,
+                speaker_a_name=scenario.speaker_a_name,
+                speaker_a_role=scenario.speaker_a_role,
+                speaker_b_name=scenario.speaker_b_name,
+                speaker_b_role=scenario.speaker_b_role,
+                day_num=1,
+                output_path=cover_tmp,
+                theme_key=model_key,
+            )
+            if cover_tmp.exists():
+                with Image.open(cover_tmp) as c_im:
+                    c_rgb = c_im.convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
+                    cover_raw_bytes = c_rgb.tobytes()
+        except Exception as e:
+            pass
 
     f_brand = _load_apple_font("keynote", size=24 if is_vert else 15)
     f_badge = _load_apple_font("rounded", size=17 if is_vert else 12)
@@ -849,7 +873,13 @@ def render_debate_video(
     smooth_r_rms = 0.0
 
     try:
-        for frame in telemetry:
+        cover_frames_count = cover_intro_frames if (is_vert and cover_raw_bytes is not None) else 0
+
+        for frame_idx, frame in enumerate(telemetry):
+            if frame_idx < cover_frames_count and cover_raw_bytes is not None:
+                proc.stdin.write(cover_raw_bytes)
+                continue
+
             t_sec = frame.timestamp_sec
             spk_code, spk_name, turn_tag, cap_text, prog, turn_idx, total_turns, prev_info = _active_caption_with_context(
                 scenario, t_sec
