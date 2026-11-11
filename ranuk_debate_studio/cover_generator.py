@@ -1,14 +1,14 @@
 # © 2026 Ranuk IT Solutions — ranuk.dev
 """
-cover_generator.py — Universal High-Conversion Cover & Thumbnail Generator for AI Debates.
+cover_generator.py — Imposing, High-Conversion Cinematic 9:16 Cover & Thumbnail Engine.
 
-Designed specifically for 9:16 Vertical formats (YouTube Shorts & TikTok):
-- Exact 1080x1920 canvas.
-- Strict safe zones: central 3:4 crop (y=380 to y=1440) fully protected against UI buttons,
-  avatar overlaps, and horizontal/square grid clippings.
-- Ranuk IT Solutions Cyber-Glass branding (neon cyan, emerald, obsidian dark mode, glowing HUD).
-- Dynamic text engine: auto-wraps debate title, speaker names, roles, and day counter.
-- Outputs lossless PNG and optimized JPEG.
+Features:
+- Imposing 3D AI Combatants (Cybernetic Neural Architect vs. Quantum AI Entity).
+- Real Ranuk IT Solutions brand identity (high-res minilogo + < R /> HUD header).
+- High-voltage volumetric clash, electric lightning, and metallic "VS" badge.
+- Dynamic color themes matching the 4 rotating UI models.
+- Word-level neon highlight with multi-directional drop shadows for maximum feed clickability.
+- Strict 9:16 vertical safe-zone layout for YouTube Shorts shelf & TikTok grids.
 """
 from __future__ import annotations
 
@@ -16,42 +16,50 @@ import math
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
-# Brand palettes aligned with the 4 rotating video models
+REPO_ROOT = Path(__file__).resolve().parent.parent
+BRAND_DIR = REPO_ROOT / "assets" / "brand"
+BASE_ARENA_PATH = BRAND_DIR / "base_arena_combatants.jpg"
+MINILOGO_PATH = BRAND_DIR / "minilogo.png"
+
+# Color themes strictly aligned with the 4 rotating video UI models
 COVER_THEMES: Dict[str, Dict[str, Any]] = {
     "model_1_cyber_nexus": {
-        "bg_dark": (4, 8, 18),
-        "bg_card": (10, 18, 36),
-        "border_a": (0, 240, 255),      # Electric Cyan
-        "border_b": (16, 235, 155),     # Neon Emerald
-        "accent": (251, 191, 36),       # Amber Gold
+        "name": "CYBER-GLASS ARENA",
+        "border_a": (0, 240, 255),       # Electric Cyan
+        "border_b": (16, 235, 155),      # Neon Emerald
+        "accent": (251, 191, 36),        # Amber Gold
         "title_highlight": (0, 240, 255),
+        "tag_bg_a": (10, 20, 42, 230),
+        "tag_bg_b": (10, 26, 32, 230),
     },
     "model_2_quantum_matrix": {
-        "bg_dark": (9, 4, 20),
-        "bg_card": (16, 10, 32),
-        "border_a": (192, 132, 252),    # Hyper Violet
-        "border_b": (251, 191, 36),     # Solar Gold
-        "accent": (0, 240, 255),        # Electric Cyan
+        "name": "QUANTUM MATRIX",
+        "border_a": (192, 132, 252),     # Hyper Violet
+        "border_b": (251, 191, 36),      # Solar Gold
+        "accent": (0, 240, 255),         # Electric Cyan
         "title_highlight": (251, 191, 36),
+        "tag_bg_a": (24, 14, 44, 230),
+        "tag_bg_b": (34, 22, 12, 230),
     },
     "model_3_silicon_warroom": {
-        "bg_dark": (10, 10, 15),
-        "bg_card": (18, 16, 26),
-        "border_a": (255, 42, 95),      # Laser Crimson
-        "border_b": (56, 189, 248),     # Ice Cobalt
-        "accent": (253, 224, 71),       # Tactical Yellow
+        "name": "SILICON WAR ROOM",
+        "border_a": (255, 42, 95),       # Laser Crimson
+        "border_b": (56, 189, 248),      # Ice Cobalt
+        "accent": (253, 224, 71),        # Tactical Yellow
         "title_highlight": (255, 42, 95),
+        "tag_bg_a": (36, 12, 22, 230),
+        "tag_bg_b": (12, 24, 40, 230),
     },
     "model_4_blackwell_tensor": {
-        "bg_dark": (4, 11, 7),
-        "bg_card": (8, 20, 16),
-        "border_a": (74, 222, 128),     # Blackwell Green
-        "border_b": (34, 211, 238),     # Plasma Cyan
-        "accent": (190, 242, 100),      # Lime Volt
+        "name": "BLACKWELL TENSOR",
+        "border_a": (74, 222, 128),      # Blackwell Tensor Green
+        "border_b": (34, 211, 238),      # Plasma Cyan
+        "accent": (190, 242, 100),       # Lime Volt
         "title_highlight": (74, 222, 128),
+        "tag_bg_a": (12, 30, 20, 230),
+        "tag_bg_b": (10, 26, 36, 230),
     },
 }
 
@@ -71,8 +79,9 @@ def _get_font(name: str, size: int) -> ImageFont.FreeTypeFont:
         return ImageFont.load_default()
 
 
-def _wrap_text_to_width(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> List[str]:
-    words = text.split()
+def _wrap_text_lines(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_width: int) -> List[str]:
+    clean = text.replace("#Shorts", "").replace("#shorts", "").strip()
+    words = clean.split()
     lines = []
     cur_line = []
     for w in words:
@@ -100,144 +109,146 @@ def generate_debate_cover(
     speaker_b_role: str,
     day_num: int = 1,
     output_path: Optional[Path] = None,
-    theme_key: str = "model_1_cyber_nexus"
+    theme_key: str = "model_1_cyber_nexus",
 ) -> Path:
     """Generate universal 1080x1920 cover image for TikTok and YouTube Shorts."""
     W, H = 1080, 1920
     theme = COVER_THEMES.get(theme_key, COVER_THEMES["model_1_cyber_nexus"])
 
-    img = Image.new("RGB", (W, H), theme["bg_dark"])
-    draw = ImageDraw.Draw(img)
+    # 1. Base Arena Background
+    if BASE_ARENA_PATH.exists():
+        bg = Image.open(BASE_ARENA_PATH).convert("RGB").resize((W, H), Image.Resampling.LANCZOS)
+    else:
+        bg = Image.new("RGB", (W, H), (4, 8, 18))
 
-    # 1. Background Grid & Tech Lines
-    for x in range(0, W, 80):
-        draw.line([(x, 0), (x, H)], fill=(12, 22, 45), width=1)
-    for y in range(0, H, 80):
-        draw.line([(0, y), (W, y)], fill=(12, 22, 45), width=1)
+    # Contrast & punch boost for mobile feed visibility
+    bg = ImageEnhance.Contrast(bg).enhance(1.15)
+    bg = ImageEnhance.Color(bg).enhance(1.20)
 
-    # Subtle diagonal circuit accents
-    draw.line([(0, 400), (400, 0)], fill=(20, 35, 65), width=2)
-    draw.line([(W - 400, H), (W, H - 400)], fill=(20, 35, 65), width=2)
+    # 2. Gradient Overlays for High-Contrast Safe Zones
+    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    gdraw = ImageDraw.Draw(overlay)
 
-    # Radial Neon Glows (under speaker cards & title)
-    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    gdraw = ImageDraw.Draw(glow)
-    gdraw.ellipse([W // 2 - 400, 750 - 400, W // 2 + 400, 750 + 400], fill=(*theme["border_a"], 35))
-    gdraw.ellipse([W // 2 - 300, 1150 - 300, W // 2 + 300, 1150 + 300], fill=(*theme["border_b"], 35))
-    glow = glow.filter(ImageFilter.GaussianBlur(90))
-    img.paste(glow, (0, 0), glow)
+    # Top darkening
+    for y in range(0, 480):
+        alpha = int(210 * (1.0 - (y / 480.0) ** 1.2))
+        gdraw.line([(0, y), (W, y)], fill=(3, 7, 18, alpha))
+
+    # Bottom darkening
+    for y in range(H - 520, H):
+        alpha = int(220 * (((y - (H - 520)) / 520.0) ** 1.2))
+        gdraw.line([(0, y), (W, y)], fill=(3, 7, 18, alpha))
+
+    # Center card shadow
+    gdraw.rounded_rectangle([40, 430, W - 40, 860], radius=32, fill=(4, 8, 22, 190))
 
     # Fonts
-    font_brand = _get_font("sf_bold", 22)
-    font_day = _get_font("title", 24)
-    font_title = _get_font("title", 52)
-    font_matchup = _get_font("sf_bold", 22)
+    font_brand = _get_font("sf_bold", 24)
+    font_badge = _get_font("sf_mono", 20)
+    font_pill = _get_font("title", 26)
+    font_title = _get_font("title", 54)
     font_name = _get_font("title", 28)
-    font_role = _get_font("sf_bold", 20)
-    font_vs = _get_font("impact", 36)
-    font_hook = _get_font("title", 24)
-    font_footer = _get_font("sf_mono", 20)
+    font_role = _get_font("sf_bold", 22)
+    font_vs = _get_font("impact", 44)
+    font_hook = _get_font("title", 25)
 
-    # 2. Top Header Bar (Brand Identity)
-    # Ranuk IT Solutions Pill
-    draw.rounded_rectangle([60, 100, 530, 162], radius=16, fill=theme["bg_card"], outline=theme["border_a"], width=2)
-    draw.text((85, 120), "RANUK IT SOLUTIONS", fill=(255, 255, 255), font=font_brand)
-    # Audio Specs Pill
-    draw.rounded_rectangle([720, 100, 1020, 162], radius=16, fill=theme["bg_card"], outline=theme["border_b"], width=2)
-    draw.text((748, 120), "● 24kHz FULL-DUPLEX", fill=theme["border_b"], font=font_brand)
+    draw = ImageDraw.Draw(overlay)
 
-    # 3. Episode Pill (Safe Zone Top, y=360)
-    draw.rounded_rectangle([290, 360, 790, 422], radius=31, fill=(18, 28, 54), outline=theme["border_a"], width=2)
-    day_str = f"🔥 DAY #{day_num:02d} • AI DEBATE ARENA"
-    bbox = draw.textbbox((0, 0), day_str, font=font_day)
-    draw.text(((W - (bbox[2] - bbox[0])) // 2, 378), day_str, fill=theme["border_a"], font=font_day)
+    # 3. Top Header Bar with REAL Ranuk Logo
+    draw.rounded_rectangle([60, 95, 560, 165], radius=20, fill=(10, 18, 36, 230), outline=(*theme["border_a"], 220), width=2)
+    if MINILOGO_PATH.exists():
+        logo = Image.open(MINILOGO_PATH).convert("RGBA").resize((64, 64), Image.Resampling.LANCZOS)
+        mask = Image.new("L", (64, 64), 0)
+        m_draw = ImageDraw.Draw(mask)
+        m_draw.ellipse([0, 0, 64, 64], fill=255)
+        overlay.paste(logo, (75, 98), mask)
+    draw.text((150, 115), "RANUK IT SOLUTIONS", fill=(255, 255, 255, 255), font=font_brand)
 
-    # 4. Main Question Card (Strictly centered in Safe Zone, y=446 to y=850)
-    card_top, card_bot = 446, 850
-    draw.rounded_rectangle([60, card_top, 1020, card_bot], radius=28, fill=theme["bg_card"], outline=theme["border_a"], width=3)
+    # Audio Specs Badge
+    draw.rounded_rectangle([720, 95, 1020, 165], radius=20, fill=(10, 18, 36, 230), outline=(*theme["border_b"], 220), width=2)
+    draw.ellipse([742, 122, 758, 138], fill=(*theme["border_b"], 255))
+    draw.text((770, 118), "24kHz FULL-DUPLEX", fill=(*theme["border_b"], 255), font=font_badge)
 
-    # Clean & Wrap Title
-    raw_title = title.replace("#Shorts", "").replace("#shorts", "").strip()
-    title_lines = _wrap_text_to_width(draw, raw_title.upper(), font_title, 880)
-    if len(title_lines) > 4:
-        title_lines = title_lines[:4]
+    # 4. Episode / Day Pill (Safe Zone Top)
+    day_pill_w = 480
+    px1 = (W - day_pill_w) // 2
+    draw.rounded_rectangle([px1, 348, px1 + day_pill_w, 412], radius=32, fill=(20, 32, 60, 240), outline=(*theme["border_a"], 240), width=2)
+    day_text = f"🔥 DAY #{day_num:02d} • {theme['name']}"
+    bbox_d = draw.textbbox((0, 0), day_text, font=font_pill)
+    draw.text(((W - (bbox_d[2] - bbox_d[0])) // 2, 367), day_text, fill=(*theme["border_a"], 255), font=font_pill)
 
-    y_t = card_top + 40
-    for idx, line in enumerate(title_lines):
+    # 5. Main Question Card (High Contrast 3D Neon Text)
+    card_x1, card_y1, card_x2, card_y2 = 50, 436, W - 50, 856
+    draw.rounded_rectangle([card_x1, card_y1, card_x2, card_y2], radius=28, fill=(8, 14, 30, 220), outline=(*theme["border_a"], 255), width=3)
+
+    # High-Tech Corner Brackets
+    b_len = 36
+    draw.line([(card_x1 - 4, card_y1 + b_len), (card_x1 - 4, card_y1 - 4), (card_x1 + b_len, card_y1 - 4)], fill=theme["accent"], width=4)
+    draw.line([(card_x2 + 4, card_y1 + b_len), (card_x2 + 4, card_y1 - 4), (card_x2 - b_len, card_y1 - 4)], fill=theme["accent"], width=4)
+    draw.line([(card_x1 - 4, card_y2 - b_len), (card_x1 - 4, card_y2 + 4), (card_x1 + b_len, card_y2 + 4)], fill=theme["accent"], width=4)
+    draw.line([(card_x2 + 4, card_y2 - b_len), (card_x2 + 4, card_y2 + 4), (card_x2 - b_len, card_y2 + 4)], fill=theme["accent"], width=4)
+
+    # Dynamic Title Wrap & Color Accent
+    raw_lines = _wrap_text_lines(draw, title.upper(), font_title, 900)
+    if len(raw_lines) > 3:
+        raw_lines = raw_lines[:3]
+
+    cur_y = card_y1 + (40 if len(raw_lines) >= 3 else 60)
+    for idx, line in enumerate(raw_lines):
         bbox = draw.textbbox((0, 0), line, font=font_title)
         lw = bbox[2] - bbox[0]
-        # Alternate highlight color on the second line or punchline
-        col = theme["title_highlight"] if idx in [1, 2] and len(title_lines) > 2 else (255, 255, 255)
-        draw.text(((W - lw) // 2, y_t), line, fill=col, font=font_title)
-        y_t += 70
+        lx = (W - lw) // 2
+        # Color: Alternate highlight color on the central punchline
+        color = theme["title_highlight"] if idx == 1 or (len(raw_lines) == 1) else (255, 255, 255)
+        # Deep 8-direction drop shadow for crystal-clear readability
+        for ox, oy in [(-3, -3), (3, -3), (-3, 3), (3, 3), (0, 4), (0, -4), (4, 0), (-4, 0)]:
+            draw.text((lx + ox, cur_y + oy), line, fill=(0, 0, 0, 255), font=font_title)
+        draw.text((lx, cur_y), line, fill=color, font=font_title)
+        cur_y += 75
 
-    # Role Matchup Capsule at bottom of card
-    matchup_text = f"{speaker_a_role.upper()}  ⚡️  {speaker_b_role.upper()}"
-    bbox_m = draw.textbbox((0, 0), matchup_text, font=font_matchup)
-    mw = bbox_m[2] - bbox_m[0]
-    capsule_x1 = max(80, (W - mw - 60) // 2)
-    capsule_x2 = min(1000, (W + mw + 60) // 2)
-    draw.rounded_rectangle([capsule_x1, card_bot - 65, capsule_x2, card_bot - 18], radius=16, fill=(18, 28, 52), outline=theme["accent"], width=1)
-    draw.text(((W - mw) // 2, card_bot - 55), matchup_text, fill=(241, 245, 249), font=font_matchup)
+    # Matchup Capsule inside Card
+    draw.rounded_rectangle([90, card_y2 - 68, W - 90, card_y2 - 18], radius=18, fill=(16, 26, 52, 235), outline=(*theme["accent"], 180), width=2)
+    match_text = f"{speaker_a_role.upper()[:24]}  ⚡️  {speaker_b_role.upper()[:24]}"
+    bbox_m = draw.textbbox((0, 0), match_text, font=font_role)
+    draw.text(((W - (bbox_m[2] - bbox_m[0])) // 2, card_y2 - 56), match_text, fill=(241, 245, 249), font=font_role)
 
-    # 5. The Dual Speaker Arena (y=880 to y=1340)
-    # Left Speaker Pod (Speaker A)
-    draw.rounded_rectangle([60, 880, 480, 1340], radius=24, fill=theme["bg_card"], outline=theme["border_a"], width=2)
-    # Concentric acoustic glow rings
-    draw.ellipse([185, 905, 355, 1075], outline=(*theme["border_a"], 70), width=2)
-    draw.ellipse([200, 920, 340, 1060], outline=(*theme["border_a"], 140), width=2)
-    draw.ellipse([215, 935, 325, 1045], fill=theme["border_a"], outline=(255, 255, 255), width=3)
+    # 6. Speaker Holographic Plaques (Left: A, Right: B)
+    # Speaker A Plaque
+    draw.rounded_rectangle([60, 1160, 470, 1310], radius=20, fill=theme["tag_bg_a"], outline=(*theme["border_a"], 240), width=2)
+    draw.text((85, 1180), speaker_a_name, fill=(255, 255, 255), font=font_name)
+    draw.text((85, 1222), speaker_a_role[:24], fill=(148, 163, 184), font=font_role)
+    draw.text((85, 1262), "CH-01 • LEFT 24kHz", fill=theme["border_a"], font=font_badge)
 
-    bbox_na = draw.textbbox((0, 0), speaker_a_name, font=font_name)
-    draw.text(((540 - (bbox_na[2] - bbox_na[0])) // 2, 1080), speaker_a_name, fill=(255, 255, 255), font=font_name)
-    bbox_ra = draw.textbbox((0, 0), speaker_a_role[:26], font=font_role)
-    draw.text(((540 - (bbox_ra[2] - bbox_ra[0])) // 2, 1125), speaker_a_role[:26], fill=(148, 163, 184), font=font_role)
+    # Speaker B Plaque
+    draw.rounded_rectangle([W - 470, 1160, W - 60, 1310], radius=20, fill=theme["tag_bg_b"], outline=(*theme["border_b"], 240), width=2)
+    draw.text((W - 445, 1180), speaker_b_name, fill=(255, 255, 255), font=font_name)
+    draw.text((W - 445, 1222), speaker_b_role[:24], fill=(148, 163, 184), font=font_role)
+    draw.text((W - 445, 1262), "CH-02 • RIGHT 24kHz", fill=theme["border_b"], font=font_badge)
 
-    # Soundwave bars (Left)
-    for i in range(14):
-        bh = 12 + int(math.sin(i * 0.6) * 22) + 20
-        draw.rectangle([110 + i * 18, 1260 - bh, 122 + i * 18, 1260], fill=theme["border_a"])
+    # 7. Center 'VS' Clash Badge (y=1235)
+    vs_x, vs_y = W // 2, 1235
+    draw.ellipse([vs_x - 55, vs_y - 55, vs_x + 55, vs_y + 55], fill=(*theme["accent"], 255), outline=(255, 255, 255, 255), width=4)
+    draw.ellipse([vs_x - 45, vs_y - 45, vs_x + 45, vs_y + 45], outline=(0, 0, 0, 200), width=2)
+    bbox_vs = draw.textbbox((0, 0), "VS", font=font_vs)
+    draw.text((vs_x - (bbox_vs[2] - bbox_vs[0]) // 2, vs_y - (bbox_vs[3] - bbox_vs[1]) // 2 - 4), "VS", fill=(0, 0, 0, 255), font=font_vs)
 
-    # Right Speaker Pod (Speaker B)
-    draw.rounded_rectangle([600, 880, 1020, 1340], radius=24, fill=theme["bg_card"], outline=theme["border_b"], width=2)
-    # Concentric acoustic glow rings
-    draw.ellipse([725, 905, 895, 1075], outline=(*theme["border_b"], 70), width=2)
-    draw.ellipse([740, 920, 880, 1060], outline=(*theme["border_b"], 140), width=2)
-    draw.ellipse([755, 935, 865, 1045], fill=theme["border_b"], outline=(255, 255, 255), width=3)
+    # 8. Bottom Safe-Zone Call to Action (y=1380 to y=1465)
+    draw.rounded_rectangle([80, 1380, W - 80, 1465], radius=42, fill=(18, 28, 56, 240), outline=(*theme["accent"], 230), width=2)
+    hook_text = "🎙️ LISTEN TO REAL-TIME INTERRUPTION • WHO WINS?"
+    bbox_h = draw.textbbox((0, 0), hook_text, font=font_hook)
+    draw.text(((W - (bbox_h[2] - bbox_h[0])) // 2, 1420), hook_text, fill=(255, 255, 255), font=font_hook)
 
-    bbox_nb = draw.textbbox((0, 0), speaker_b_name, font=font_name)
-    draw.text(((W + 600 - (bbox_nb[2] - bbox_nb[0])) // 2, 1080), speaker_b_name, fill=(255, 255, 255), font=font_name)
-    bbox_rb = draw.textbbox((0, 0), speaker_b_role[:26], font=font_role)
-    draw.text(((W + 600 - (bbox_rb[2] - bbox_rb[0])) // 2, 1125), speaker_b_role[:26], fill=(148, 163, 184), font=font_role)
+    # 9. Brand Footer Bar (y=1780)
+    draw.text(((W - 460) // 2, 1780), "ranuk.dev/debates • Ranuk IT Solutions", fill=(148, 163, 184, 220), font=font_role)
 
-    # Soundwave bars (Right)
-    for i in range(14):
-        bh = 12 + int(math.cos(i * 0.6) * 22) + 20
-        draw.rectangle([650 + i * 18, 1260 - bh, 662 + i * 18, 1260], fill=theme["border_b"])
-
-    # Center Clash Badge ("VS")
-    draw.ellipse([495, 1065, 585, 1155], fill=theme["accent"], outline=(255, 255, 255), width=4)
-    draw.text((518, 1087), "VS", fill=(0, 0, 0), font=font_vs)
-
-    # 6. Bottom Acoustic Action Hook (Safe Zone Bottom, y=1390)
-    draw.rounded_rectangle([100, 1390, 980, 1475], radius=42, fill=(18, 28, 54), outline=theme["accent"], width=2)
-    hook_str = "🎙️ REAL-TIME INTERRUPTION • WHO WON THE DEBATE?"
-    bbox_h = draw.textbbox((0, 0), hook_str, font=font_hook)
-    draw.text(((W - (bbox_h[2] - bbox_h[0])) // 2, 1420), hook_str, fill=(255, 255, 255), font=font_hook)
-
-    # 7. Brand Footer
-    footer_text = "ranuk.dev/debates • Ranuk IT Solutions"
-    bbox_f = draw.textbbox((0, 0), footer_text, font=font_footer)
-    draw.text(((W - (bbox_f[2] - bbox_f[0])) // 2, 1780), footer_text, fill=(100, 116, 139), font=font_footer)
+    # Final Composite
+    final_img = Image.alpha_composite(bg.convert("RGBA"), overlay).convert("RGB")
 
     if output_path is None:
         output_path = Path(f"/tmp/debate_day_{day_num:02d}_cover.png")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    img.save(str(output_path), format="PNG", quality=95)
-
-    # Also save JPEG twin (for YouTube Data API v3 custom thumbnail)
-    jpg_path = output_path.with_suffix(".jpg")
-    img.save(str(jpg_path), format="JPEG", quality=92)
+    final_img.save(str(output_path), format="PNG", quality=95)
+    final_img.save(str(output_path.with_suffix(".jpg")), format="JPEG", quality=92)
 
     return output_path
