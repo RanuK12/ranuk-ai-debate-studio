@@ -1159,7 +1159,11 @@ def synthesize_duplex_debate(
             )
         preferred_style = "split_wave"
     else:
-        raise KeyError(f"Unknown debate slug '{slug}'. Available: {list(HOT_DEBATE_SCRIPTS.keys()) + list(PRESET_SCENARIOS.keys())}")
+        try:
+            from .debate_catalog_90d import get_scenario_and_turns
+            base_scenario, turns, preferred_style = get_scenario_and_turns(slug)
+        except Exception as e:
+            raise KeyError(f"Unknown debate slug '{slug}'. Available: {list(HOT_DEBATE_SCRIPTS.keys()) + list(PRESET_SCENARIOS.keys())}. Error: {e}")
     output_wav.parent.mkdir(parents=True, exist_ok=True)
     meta_json = output_wav.with_suffix(".json")
     if output_wav.exists() and meta_json.exists() and output_wav.stat().st_size > 10000:
