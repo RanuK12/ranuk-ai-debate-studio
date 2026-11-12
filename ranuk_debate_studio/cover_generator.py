@@ -173,7 +173,7 @@ def generate_debate_cover(
     day_pill_w = 480
     px1 = (W - day_pill_w) // 2
     draw.rounded_rectangle([px1, 348, px1 + day_pill_w, 412], radius=32, fill=(20, 32, 60, 240), outline=(*theme["border_a"], 240), width=2)
-    day_text = f"🔥 DAY #{day_num:02d} • {theme['name']}"
+    day_text = f"LIVE  //  DAY #{day_num:02d} • {theme['name']}"
     bbox_d = draw.textbbox((0, 0), day_text, font=font_pill)
     draw.text(((W - (bbox_d[2] - bbox_d[0])) // 2, 367), day_text, fill=(*theme["border_a"], 255), font=font_pill)
 
@@ -208,7 +208,7 @@ def generate_debate_cover(
 
     # Matchup Capsule inside Card
     draw.rounded_rectangle([90, card_y2 - 68, W - 90, card_y2 - 18], radius=18, fill=(16, 26, 52, 235), outline=(*theme["accent"], 180), width=2)
-    match_text = f"{speaker_a_role.upper()[:24]}  ⚡️  {speaker_b_role.upper()[:24]}"
+    match_text = f"{speaker_a_role.upper()[:24]}   VS   {speaker_b_role.upper()[:24]}"
     bbox_m = draw.textbbox((0, 0), match_text, font=font_role)
     draw.text(((W - (bbox_m[2] - bbox_m[0])) // 2, card_y2 - 56), match_text, fill=(241, 245, 249), font=font_role)
 
@@ -234,7 +234,7 @@ def generate_debate_cover(
 
     # 8. Bottom Safe-Zone Call to Action (y=1380 to y=1465)
     draw.rounded_rectangle([80, 1380, W - 80, 1465], radius=42, fill=(18, 28, 56, 240), outline=(*theme["accent"], 230), width=2)
-    hook_text = "🎙️ LISTEN TO REAL-TIME INTERRUPTION • WHO WINS?"
+    hook_text = "180ms INTERRUPT DEBATE  •  PICK YOUR SIDE BELOW"
     bbox_h = draw.textbbox((0, 0), hook_text, font=font_hook)
     draw.text(((W - (bbox_h[2] - bbox_h[0])) // 2, 1420), hook_text, fill=(255, 255, 255), font=font_hook)
 

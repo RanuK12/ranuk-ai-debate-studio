@@ -764,7 +764,7 @@ def render_debate_video(
     width: int = 1280,
     height: int = 720,
     style: str = "glass_studio",
-    cover_intro_frames: int = 12,
+    cover_intro_frames: int = 1,
 ) -> Path:
     """Render broadcast MP4 video with 4 rotating vertical models, Frame 0 master cover, and guaranteed karaoke subtitles."""
     is_vert = style in ("vertical_reel",) or style in VERTICAL_UI_MODELS or (height > width)
@@ -852,7 +852,7 @@ def render_debate_video(
         "-preset",
         "veryfast",
         "-crf",
-        "19",
+        "17",
         "-pix_fmt",
         "yuv420p",
         "-c:a",

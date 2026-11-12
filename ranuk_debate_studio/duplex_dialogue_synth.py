@@ -1094,7 +1094,7 @@ def _decode_mono_24k(audio_file: Path, sample_rate: int = 24000) -> np.ndarray:
             "-i",
             str(audio_file),
             "-af",
-            "silenceremove=start_periods=1:start_duration=0.02:start_threshold=-48dB",
+            "silenceremove=start_periods=1:start_duration=0.02:start_threshold=-38dB:stop_periods=-1:stop_duration=0.16:stop_threshold=-38dB",
             "-f",
             "s16le",
             "-ac",
@@ -1106,10 +1106,10 @@ def _decode_mono_24k(audio_file: Path, sample_rate: int = 24000) -> np.ndarray:
         timeout=30,
     )
     samples = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
-    # Trim trailing near-silence so overlaps align tightly with spoken words
-    non_silent = np.where(np.abs(samples) > 0.008)[0]
+    # Trim trailing near-silence tightly so overlaps align right on spoken words
+    non_silent = np.where(np.abs(samples) > 0.015)[0]
     if len(non_silent) > 100:
-        end_idx = min(len(samples), int(non_silent[-1]) + int(sample_rate * 0.06))
+        end_idx = min(len(samples), int(non_silent[-1]) + int(sample_rate * 0.03))
         samples = samples[:end_idx]
     return samples
 
@@ -1200,9 +1200,9 @@ def synthesize_duplex_debate(
         mp3_files = asyncio.run(_run_all())
         mono_arrays = [_decode_mono_24k(p, sample_rate=sample_rate) for p in mp3_files]
 
-    # Calculate timeline placements with full-duplex overlaps
+    # Calculate timeline placements with snappy full-duplex overlaps (zero dead intro pause)
     placements: List[Tuple[int, int, DialogueTurn, np.ndarray]] = []
-    cursor_sample = int(0.35 * sample_rate)
+    cursor_sample = int(0.02 * sample_rate)
 
     for turn, arr in zip(turns, mono_arrays):
         if placements and turn.overlap_prev_ms > 0:
@@ -1213,9 +1213,9 @@ def synthesize_duplex_debate(
 
         end_sample = start_sample + len(arr)
         placements.append((start_sample, end_sample, turn, arr))
-        cursor_sample = end_sample + int((turn.pause_after_ms / 1000.0) * sample_rate)
+        cursor_sample = end_sample + int((min(turn.pause_after_ms, 60) / 1000.0) * sample_rate)
 
-    total_samples = cursor_sample + int(0.6 * sample_rate)
+    total_samples = cursor_sample + int(0.25 * sample_rate)
     left_ch = np.zeros(total_samples, dtype=np.float32)
     right_ch = np.zeros(total_samples, dtype=np.float32)
 
