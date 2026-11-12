@@ -170,12 +170,13 @@ def generate_debate_cover(
     draw.text((770, 118), "24kHz FULL-DUPLEX", fill=(*theme["border_b"], 255), font=font_badge)
 
     # 4. Episode / Day Pill (Safe Zone Top)
-    day_pill_w = 480
-    px1 = (W - day_pill_w) // 2
-    draw.rounded_rectangle([px1, 348, px1 + day_pill_w, 412], radius=32, fill=(20, 32, 60, 240), outline=(*theme["border_a"], 240), width=2)
     day_text = f"LIVE  //  DAY #{day_num:02d} • {theme['name']}"
     bbox_d = draw.textbbox((0, 0), day_text, font=font_pill)
-    draw.text(((W - (bbox_d[2] - bbox_d[0])) // 2, 367), day_text, fill=(*theme["border_a"], 255), font=font_pill)
+    text_w = bbox_d[2] - bbox_d[0]
+    day_pill_w = min(W - 80, max(480, text_w + 84))
+    px1 = (W - day_pill_w) // 2
+    draw.rounded_rectangle([px1, 348, px1 + day_pill_w, 412], radius=32, fill=(20, 32, 60, 240), outline=(*theme["border_a"], 240), width=2)
+    draw.text(((W - text_w) // 2, 367), day_text, fill=(*theme["border_a"], 255), font=font_pill)
 
     # 5. Main Question Card (High Contrast 3D Neon Text)
     card_x1, card_y1, card_x2, card_y2 = 50, 436, W - 50, 856
