@@ -1114,11 +1114,49 @@ def _decode_mono_24k(audio_file: Path, sample_rate: int = 24000) -> np.ndarray:
     return samples
 
 
+VOICE_CODE_MAP: Dict[str, str] = {
+    "NATM0": "en-US-AndrewMultilingualNeural",
+    "NATM1": "en-US-BrianMultilingualNeural",
+    "NATM2": "en-US-ChristopherNeural",
+    "NATM3": "en-US-EricNeural",
+    "VARM0": "en-US-GuyNeural",
+    "VARM1": "en-US-RogerNeural",
+    "VARM2": "en-US-SteffanNeural",
+    "VARM3": "en-GB-RyanNeural",
+    "VARM4": "en-AU-WilliamNeural",
+    "NATF0": "en-US-AvaMultilingualNeural",
+    "NATF1": "en-US-EmmaMultilingualNeural",
+    "NATF2": "en-US-AriaNeural",
+    "NATF3": "en-US-JennyNeural",
+    "VARF0": "en-US-MichelleNeural",
+    "VARF1": "en-GB-SoniaNeural",
+    "VARF2": "en-AU-NatashaNeural",
+    "VARF3": "en-CA-ClaraNeural",
+    "VARF4": "en-US-AvaMultilingualNeural",
+}
+
+
 async def _synth_turn_mp3(turn: DialogueTurn, out_mp3: Path) -> None:
-    voices_to_try = [turn.voice, "en-US-GuyNeural", "en-US-JennyNeural", "es-ES-AlvaroNeural"]
+    mapped_voice = VOICE_CODE_MAP.get(turn.voice, turn.voice)
+    is_female = mapped_voice in (
+        "en-US-AvaMultilingualNeural",
+        "en-US-EmmaMultilingualNeural",
+        "en-US-AriaNeural",
+        "en-US-JennyNeural",
+        "en-US-MichelleNeural",
+        "en-GB-SoniaNeural",
+        "en-AU-NatashaNeural",
+        "en-CA-ClaraNeural",
+    ) or turn.voice.startswith(("NATF", "VARF"))
+    fallback_pool = (
+        ["en-US-AvaMultilingualNeural", "en-US-EmmaMultilingualNeural", "en-US-JennyNeural"]
+        if is_female
+        else ["en-US-AndrewMultilingualNeural", "en-US-ChristopherNeural", "en-US-GuyNeural"]
+    )
+    voices_to_try = [mapped_voice] + [v for v in fallback_pool if v != mapped_voice]
     last_err = None
-    for attempt in range(4):
-        v = voices_to_try[min(attempt, len(voices_to_try) - 1)]
+    for attempt in range(len(voices_to_try)):
+        v = voices_to_try[attempt]
         try:
             comm = edge_tts.Communicate(turn.text, voice=v, rate=turn.rate, pitch=turn.pitch)
             await comm.save(str(out_mp3))

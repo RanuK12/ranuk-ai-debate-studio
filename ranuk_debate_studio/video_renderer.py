@@ -419,30 +419,121 @@ def _draw_apple_siri_orb(
     phase: float = 0.0,
     max_halo_radius: int = 58,
 ) -> None:
+    """Draws an Animated Cyber-AI Debater Avatar with expressive visor eyes, real-time lip-sync vocal grille, and neural halo."""
+    look_dir = 1 if cx < 540 else -1
+    bob = int(math.sin(phase * (9.5 if speaking else 2.6)) * (3.5 if speaking else 1.5))
+    cy_av = cy + bob
+
+    # 1. Outer pulsing neural rings & orbiting synaptic nodes when speaking
     if speaking:
         for ring in [3, 2, 1]:
-            r_boost = min(max_halo_radius - radius, int(ring * (6 + rms * 11) + math.sin(phase * 4.5 + ring) * 3))
-            alpha = max(25, int((95 - ring * 22) * (0.7 + rms * 0.3)))
+            r_boost = min(max_halo_radius - radius + 12, int(ring * (7 + rms * 13) + math.sin(phase * 5.0 + ring) * 3))
+            alpha = max(30, int((115 - ring * 24) * (0.7 + rms * 0.3)))
             draw.ellipse(
-                [cx - (radius + r_boost), cy - (radius + r_boost), cx + (radius + r_boost), cy + (radius + r_boost)],
-                fill=(*primary_color, alpha // 4),
+                [cx - (radius + r_boost), cy_av - (radius + r_boost), cx + (radius + r_boost), cy_av + (radius + r_boost)],
+                fill=(*primary_color, alpha // 5),
                 outline=(*primary_color, alpha),
                 width=2,
             )
-
-    r_core = radius + int(rms * 6 if speaking else 0)
-    for step in range(r_core, 0, -3):
-        frac = step / float(max(1, r_core))
-        col = (
-            int(primary_color[0] * frac + secondary_color[0] * (1 - frac)),
-            int(primary_color[1] * frac + secondary_color[1] * (1 - frac)),
-            int(primary_color[2] * frac + secondary_color[2] * (1 - frac)),
+        for n_i in range(4):
+            ang = phase * 2.4 + n_i * (math.pi / 2.0)
+            orb_r = radius + 14 + int(rms * 10)
+            nx = cx + int(math.cos(ang) * orb_r)
+            ny = cy_av + int(math.sin(ang) * orb_r)
+            draw.ellipse([nx - 4, ny - 4, nx + 4, ny + 4], fill=(255, 255, 255, 235), outline=(*primary_color, 255), width=1)
+    else:
+        draw.ellipse(
+            [cx - (radius + 6), cy_av - (radius + 6), cx + (radius + 6), cy_av + (radius + 6)],
+            outline=(*primary_color, 70),
+            width=1,
         )
-        alpha = int(245 if speaking else 160)
-        draw.ellipse([cx - step, cy - step, cx + step, cy + step], fill=(*col, alpha))
 
-    sheen_box = [cx - int(r_core * 0.75), cy - int(r_core * 0.75), cx + int(r_core * 0.75), cy + int(r_core * 0.75)]
-    draw.arc(sheen_box, start=205, end=335, fill=(255, 255, 255, 220 if speaking else 95), width=3)
+    # 2. Cybernetic Head Armor Silhouette
+    r_head = radius + int(rms * 4 if speaking else 0)
+    draw.rounded_rectangle(
+        [cx - r_head, cy_av - r_head, cx + r_head, cy_av + r_head],
+        radius=max(14, int(r_head * 0.42)),
+        fill=(10, 15, 26, 245),
+        outline=(*primary_color, 250 if speaking else 130),
+        width=3 if speaking else 2,
+    )
+    # Side cyber-ear / antenna pods
+    ear_w, ear_h = max(5, int(r_head * 0.16)), max(12, int(r_head * 0.44))
+    draw.rounded_rectangle(
+        [cx - r_head - ear_w, cy_av - ear_h // 2, cx - r_head + 1, cy_av + ear_h // 2],
+        radius=3,
+        fill=(*primary_color, 230 if speaking else 110),
+    )
+    draw.rounded_rectangle(
+        [cx + r_head - 1, cy_av - ear_h // 2, cx + r_head + ear_w, cy_av + ear_h // 2],
+        radius=3,
+        fill=(*primary_color, 230 if speaking else 110),
+    )
+
+    # 3. Visor Plate + Expressive Blinking & Opponent-Tracking Cyber Eyes
+    vx0, vy0 = cx - int(r_head * 0.76), cy_av - int(r_head * 0.48)
+    vx1, vy1 = cx + int(r_head * 0.76), cy_av + int(r_head * 0.08)
+    draw.rounded_rectangle(
+        [vx0, vy0, vx1, vy1],
+        radius=max(6, int(r_head * 0.18)),
+        fill=(4, 8, 16, 245),
+        outline=(*secondary_color, 180 if speaking else 90),
+        width=1,
+    )
+
+    blink_cycle = (phase * 0.33 + (0.15 if look_dir > 0 else 0.62)) % 1.0
+    is_blink = blink_cycle > 0.94
+    eye_dx = int(r_head * 0.34)
+    eye_y = (vy0 + vy1) // 2
+    gaze_shift = look_dir * max(2, int(r_head * 0.08)) + int(math.sin(phase * 3.1) * 1.5)
+    eye_rx = max(5, int(r_head * 0.19))
+    eye_ry = 1 if is_blink else max(4, int(r_head * (0.15 if speaking else 0.12)))
+
+    for ex in (cx - eye_dx + gaze_shift, cx + eye_dx + gaze_shift):
+        draw.ellipse(
+            [ex - eye_rx, eye_y - eye_ry, ex + eye_rx, eye_y + eye_ry],
+            fill=(*primary_color, 255 if speaking else 175),
+        )
+        if not is_blink:
+            draw.ellipse(
+                [ex - max(2, eye_rx // 3), eye_y - max(2, eye_ry // 3), ex + max(2, eye_rx // 3), eye_y + max(2, eye_ry // 3)],
+                fill=(255, 255, 255, 250),
+            )
+
+    # Expressive angled cyber-brows when actively arguing
+    if speaking and not is_blink:
+        brow_y = vy0 + 3
+        draw.line(
+            [(cx - eye_dx - eye_rx + gaze_shift, brow_y - 2), (cx - 4 + gaze_shift, brow_y + 3)],
+            fill=(255, 255, 255, 220),
+            width=2,
+        )
+        draw.line(
+            [(cx + eye_dx + eye_rx + gaze_shift, brow_y - 2), (cx + 4 + gaze_shift, brow_y + 3)],
+            fill=(255, 255, 255, 220),
+            width=2,
+        )
+
+    # 4. Real-Time Lip-Sync Vocal Synthesizer Grille (Mouth)
+    mouth_y = cy_av + int(r_head * 0.44)
+    num_bars = 7
+    bar_w = max(2, int(r_head * 0.11))
+    gap = max(2, int(r_head * 0.06))
+    total_mw = num_bars * bar_w + (num_bars - 1) * gap
+    mx_start = cx - total_mw // 2
+    open_amp = min(1.0, max(0.08, rms * 1.85)) if speaking else 0.08
+
+    for b_i in range(num_bars):
+        center_weight = 1.0 - 0.22 * abs(b_i - (num_bars // 2))
+        flutter = 0.65 + 0.35 * abs(math.sin(phase * 18.0 + b_i * 0.9))
+        bh = max(2, int(r_head * 0.34 * open_amp * center_weight * (flutter if speaking else 0.3)))
+        bx = mx_start + b_i * (bar_w + gap)
+        col_m = (255, 255, 255, 245) if (speaking and b_i == num_bars // 2) else (*primary_color, 240 if speaking else 110)
+        draw.rounded_rectangle(
+            [bx, mouth_y - bh, bx + bar_w, mouth_y + bh],
+            radius=max(1, bar_w // 2),
+            fill=col_m,
+        )
 
 
 def _draw_radial_halo_visualizer(
@@ -738,13 +829,45 @@ def _draw_subtitle_stage_vertical(
     if fill_w > 8:
         draw.rounded_rectangle([bar_x0, bar_y, bar_x0 + fill_w, bar_y + 8], radius=4, fill=(*active_col, 255))
 
-    # --- Ranuk IT Solutions Signature Footer Badge (y = 1522..1580) ---
-    fy0, fy1 = 1522, 1580
+    # --- Live Animated Persuasion Tug-of-War Meter (y = 1518..1598) ---
+    pm_y0, pm_y1 = 1518, 1598
+    draw.rounded_rectangle(
+        [sx0, pm_y0, sx1, pm_y1],
+        radius=22,
+        fill=(*theme["card_bg"], 238),
+        outline=(*active_col, 175),
+        width=2,
+    )
+    swing_dir = 1.0 if spk_code == "A" else -1.0
+    persuasion_a = 0.50 + swing_dir * (0.04 + 0.05 * prog) + 0.018 * math.sin(t_sec * 4.2)
+    persuasion_a = max(0.36, min(0.64, persuasion_a))
+    pct_a = int(round(persuasion_a * 100))
+    pct_b = 100 - pct_a
+
+    draw.text((sx0 + 26, pm_y0 + 10), f"SIDE A: {pct_a}%", fill=(*col_a, 255), font=f_prev)
+    vote_cta = "LIVE AI PERSUASION METER  •  VOTE A OR B IN COMMENTS"
+    vb_box = draw.textbbox((0, 0), vote_cta, font=f_prev)
+    draw.text(((width - (vb_box[2] - vb_box[0])) // 2, pm_y0 + 10), vote_cta, fill=(230, 240, 255, 235), font=f_prev)
+    b_txt = f"SIDE B: {pct_b}%"
+    bt_box = draw.textbbox((0, 0), b_txt, font=f_prev)
+    draw.text((sx1 - 26 - (bt_box[2] - bt_box[0]), pm_y0 + 10), b_txt, fill=(*col_b, 255), font=f_prev)
+
+    tug_x0, tug_x1 = sx0 + 26, sx1 - 26
+    tug_y0, tug_y1 = pm_y0 + 42, pm_y0 + 64
+    tug_w = tug_x1 - tug_x0
+    split_x = tug_x0 + int(tug_w * persuasion_a)
+
+    draw.rounded_rectangle([tug_x0, tug_y0, tug_x1, tug_y1], radius=11, fill=(*col_b, 215))
+    draw.rounded_rectangle([tug_x0, tug_y0, split_x, tug_y1], radius=11, fill=(*col_a, 240))
+    draw.ellipse([split_x - 14, tug_y0 - 4, split_x + 14, tug_y1 + 4], fill=(255, 255, 255, 250), outline=(*active_col, 255), width=3)
+
+    # --- Ranuk IT Solutions Signature Footer Badge (y = 1612..1668) ---
+    fy0, fy1 = 1612, 1668
     fw = 780
     fx0 = (width - fw) // 2
     draw.rounded_rectangle(
         [fx0, fy0, fx0 + fw, fy1],
-        radius=29,
+        radius=28,
         fill=(*theme["card_bg"], 232),
         outline=(*col_a, 140),
         width=1,
@@ -752,7 +875,7 @@ def _draw_subtitle_stage_vertical(
     if logo_small:
         overlay.paste(logo_small, (fx0 + 18, fy0 + (fy1 - fy0 - logo_small.height) // 2), logo_small)
     footer_txt = f"RANUK IT SOLUTIONS  •  ranuk.dev/debates  •  T+{t_sec:05.2f}s"
-    draw.text((fx0 + 68, fy0 + 18), footer_txt, fill=(235, 242, 250, 245), font=f_footer)
+    draw.text((fx0 + 68, fy0 + 17), footer_txt, fill=(235, 242, 250, 245), font=f_footer)
 
 
 def render_debate_video(

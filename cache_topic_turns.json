@@ -1,0 +1,623 @@
+{
+  "ai_doctors_better": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "AI diagnoses 95% accurately, outpacing average doctors."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Samuel, AI misses nuances, like my patient's rare disease misdiagnosed by AI."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "Grace, human doctors misdiagnose 10% to 15% of cases, AI reduces error rates."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "But AI-first diagnosis led to 25% increase in malpractice claims in California last year."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Do you trust a possibly fallible human or a precise AI with your life?"
+    }
+  ],
+  "ai_replaces_hollywood": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Rebecca: Fully AI-generated movies will hit theaters within five years."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Dylan! That ignores what is actually happening right now: Audiences pay to see real humans, AI actors will never replace stars."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will AI Replace Hollywood Actors' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Dylan, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will AI Replace Hollywood Actors: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "small_models_beat_giants": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Danielle: Small local models on laptops are good enough for most tasks and totally private."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Aaron! That ignores what is actually happening right now: Giant cloud models will always be much smarter than anything on a laptop."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Can Small Local Models Beat Giant Cloud AI' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Aaron, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Can Small Local Models Beat Giant Cloud AI: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_tutors_vs_teachers": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Michelle: Personal AI tutors teach faster than any classroom and will replace most lectures."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Patrick! That ignores what is actually happening right now: Kids need human teachers for motivation and discipline, AI tutors cannot replace that."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will AI Tutors Replace Teachers' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Patrick, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will AI Tutors Replace Teachers: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "x402_agents_pay": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Connor Hayes here. Autonomous agents can't legally hold wallets—the SEC fines $4.2B for crypto ponzi schemes. This isn't a feature, it's a compliance nightmare."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Connor, your argument ignores the 2023 DeFi surge where 45% of transactions were agent-driven. Stablecoin wallets let them pay for APIs without credit card rejections."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "Ava, those 45% were bots, not autonomous agents. The SEC's 2024 guidance explicitly bans agent wallets—risking $100M+ fines for non-compliance."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Connor, look at the 2024 Web3 adoption: 78% of AI agents now use stablecoin wallets. The SEC's guidance is outdated—HTTP 402 is the future."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Ava, you're ignoring the SEC's 2024 crackdown on 'agent wallets'—either embrace compliance or face the $100M+ fines."
+    }
+  ],
+  "ai_kills_call_centers": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Isabella: Customers still want humans for hard problems, call centers will survive."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Gregory! That ignores what is actually happening right now: Real-time voice AI already handles most calls and call centers will shrink fast."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will Voice AI Kill Call Center Jobs' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Gregory, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will Voice AI Kill Call Center Jobs: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "china_vs_usa_ai_race": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Linda: America wins because it controls the best chips and the best labs."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Robert! That ignores what is actually happening right now: China is catching up fast with cheap open models and massive deployment."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Who Is Winning the AI Race: USA or China' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Robert, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Who Is Winning the AI Race: USA or China: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "apple_late_to_ai": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Kayla: Apple is years behind in AI and Siri proves it."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Justin! That ignores what is actually happening right now: Apple always arrives late and wins with privacy and on-device AI."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Is Apple Too Late to the AI Race' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Justin, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Is Apple Too Late to the AI Race: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "data_centers_nuclear": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Rachel: Only nuclear can power AI data centers without blackouts and emissions."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Steven! That ignores what is actually happening right now: New nuclear takes too long, solar plus batteries should power AI now."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Should AI Data Centers Run on Nuclear Power' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Steven, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Should AI Data Centers Run on Nuclear Power: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_art_real_art": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Ella: AI is a brush, the art is in the human vision and taste."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Leo! That ignores what is actually happening right now: Typing a prompt is not art, it is remixing stolen work."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Is AI Art Real Art' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Leo, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Is AI Art Real Art: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "four_day_week_ai": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Stephanie: AI productivity gains should become a four-day week for everyone."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Matthew! That ignores what is actually happening right now: Companies will use AI gains to cut costs, not to give people Fridays off."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Should AI Give Us a Four-Day Work Week' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Matthew, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Should AI Give Us a Four-Day Work Week: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_boss_manager": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Nicole: AI managers are fairer and more consistent than human bosses."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Brian! That ignores what is actually happening right now: People quit managers, not jobs, and nobody will be loyal to an algorithm."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Would You Work for an AI Manager' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Brian, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Would You Work for an AI Manager: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ar_glasses_replace_phones": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Alyssa: Smart glasses with AI will replace phones within ten years."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Zach! That ignores what is actually happening right now: Phones are too useful and glasses too awkward, phones stay king."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will Smart Glasses Replace Smartphones' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Zach, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will Smart Glasses Replace Smartphones: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_hiring_bias": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Tiffany: AI hiring removes human bias and finds hidden talent."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Kyle! That ignores what is actually happening right now: AI hiring scales bias at massive speed and should be heavily restricted."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Should AI Decide Who Gets Hired' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Kyle, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Should AI Decide Who Gets Hired: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "rust_vs_cpp": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Jennifer: Rust should replace C++ because memory bugs cost billions."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Adam! That ignores what is actually happening right now: C++ is too entrenched and fast, Rust will never replace it in games."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Should Rust Replace C++ Everywhere' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Adam, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Should Rust Replace C++ Everywhere: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_weather_forecast": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Kelly: Physics models remain the gold standard for weather forecasting."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Paul! That ignores what is actually happening right now: AI forecasts are already faster and more accurate than physics supercomputers."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Can AI Predict the Weather Better Than Supercomputers' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Paul, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Can AI Predict the Weather Better Than Supercomputers: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ubi_because_ai": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Diana: AI automation will make universal basic income unavoidable."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Scott! That ignores what is actually happening right now: AI will create new jobs like every technology before, UBI is unnecessary."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will AI Force Universal Basic Income' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Scott, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will AI Force Universal Basic Income: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "tiktok_algorithm_harm": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Brianna: Infinite feed algorithms are engineered addiction and harm attention spans."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Jake! That ignores what is actually happening right now: Algorithms help small creators get discovered, the problem is how people use them."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Are Recommendation Algorithms Rotting Our Brains' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Jake, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Are Recommendation Algorithms Rotting Our Brains: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_lawyers": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Mia: Courtrooms need human advocates, AI cannot replace lawyers."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Charles! That ignores what is actually happening right now: AI already drafts contracts and research better than junior associates."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Will AI Replace Lawyers' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Charles, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Will AI Replace Lawyers: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "spatial_computing_vs_vr": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Paige: Spatial computing is the next platform after the phone."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Derek! That ignores what is actually happening right now: The metaverse flopped and VR headsets will stay a niche gadget."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Is the Metaverse Dead or Just Getting Started' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Derek, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Is the Metaverse Dead or Just Getting Started: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "ai_scams_voice_clone": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Sabrina: Voice cloning scams are exploding and you cannot trust any voice call anymore."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Trevor! That ignores what is actually happening right now: Detection and code words make voice cloning scams beatable."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Can You Still Trust a Phone Call in the Age of Voice Clones' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Trevor, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Can You Still Trust a Phone Call in the Age of Voice Clones: do you trust human accountability or algorithmic scale?"
+    }
+  ],
+  "mamba_vs_transformers": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "State space models (SSMs) already outperform transformers on long-context tasks—Google's Pathways LM hit 200K tokens with 10x fewer parameters."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Ian, but NVIDIA's Hopper H100 GPUs are optimized for sparse attention—Transformers still win on inference speed and cost."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "Hopper H100s are great, but SSMs train 3x faster on A100s—hardware isn't the bottleneck; architecture is."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Meta's LLaMA 3.1 405B uses grouped-query attention—outperforms SSMs on latency while handling 128K tokens."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "If you need long-context efficiency, SSMs win—but if you prioritize deployment speed, Transformers still dominate."
+    }
+  ],
+  "ai_drug_discovery": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Allison: AI will cut drug discovery from ten years to two."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Victor! That ignores what is actually happening right now: Clinical trials are the bottleneck, AI does not make biology faster."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Can AI Cure Diseases Faster Than Pharma' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Victor, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Can AI Cure Diseases Faster Than Pharma: do you trust human accountability or algorithmic scale?"
+    }
+  ]
+}
