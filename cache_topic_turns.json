@@ -619,5 +619,32 @@
       "tag": "FINAL VERDICT",
       "text": "So here is the real question on Can AI Cure Diseases Faster Than Pharma: do you trust human accountability or algorithmic scale?"
     }
+  ],
+  "tesla_robotaxi_vs_waymo": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Look at the real numbers, Lauren: Tesla wins because cameras plus millions of cars give it unbeatable data."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Wait a second, Chris! That ignores what is actually happening right now: Waymo wins because lidar and real driverless rides already work today."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "When you test 'Tesla Robotaxi vs Waymo: Who Wins Self-Driving' under real-world liability and edge cases, one bad hallucination destroys years of trust."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Except humans make those exact mistakes every single day, Chris, while verifiable AI systems improve across millions of cases overnight."
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "So here is the real question on Tesla Robotaxi vs Waymo: Who Wins Self-Driving: do you trust human accountability or algorithmic scale?"
+    }
   ]
 }
