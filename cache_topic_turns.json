@@ -646,5 +646,32 @@
       "tag": "FINAL VERDICT",
       "text": "So here is the real question on Tesla Robotaxi vs Waymo: Who Wins Self-Driving: do you trust human accountability or algorithmic scale?"
     }
+  ],
+  "neuralink_brain_chips": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Neuralink chips can cure paralysis, 100,000 Americans affected annually."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Jordan, Neuralink's chip has 1,000 electrodes, a privacy nightmare"
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "Victoria, FDA approved deep brain stimulation with 10,000 users"
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "But Jordan, China's Brain-Computer Interface has 50% error rate"
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Would you rather be paralyzed or risk a 1% chip malfunction?"
+    }
   ]
 }
