@@ -673,5 +673,32 @@
       "tag": "FINAL VERDICT",
       "text": "Would you rather be paralyzed or risk a 1% chip malfunction?"
     }
+  ],
+  "ai_music_copyright": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "AI music is the future, 60% of Spotify users already listen to AI-generated playlists."
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Tyler, 90% of AI music is trained on songs by human artists without permission or royalties."
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "Chloe, banning AI music won't stop piracy, but hurt innovation and 10,000 AI music producers."
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "But Tyler, the EU already requires AI models to disclose training data, why not Spotify?"
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Will you choose artistic freedom or censorship, letting algorithms decide what music you can hear?"
+    }
   ]
 }
