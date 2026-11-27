@@ -700,5 +700,32 @@
       "tag": "FINAL VERDICT",
       "text": "Will you choose artistic freedom or censorship, letting algorithms decide what music you can hear?"
     }
+  ],
+  "passkeys_kill_passwords": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Passkeys will kill passwords by 2026, with 60% of users already adopting"
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Eric, 30% of enterprises still use outdated systems that don't support passkeys"
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "But 90% of data breaches are due to weak passwords, not passkey flaws"
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Yet, 80% of users reuse passwords, a habit passkeys won't change overnight"
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Will you risk your identity on outdated passwords or embrace passkey security?"
+    }
   ]
 }
