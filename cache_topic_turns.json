@@ -727,5 +727,32 @@
       "tag": "FINAL VERDICT",
       "text": "Will you risk your identity on outdated passwords or embrace passkey security?"
     }
+  ],
+  "quantum_breaks_bitcoin": [
+    {
+      "speaker": "A",
+      "tag": "OPENING HOOK",
+      "text": "Quantum computers will break Bitcoin's ECDSA signatures by 2030, says Google"
+    },
+    {
+      "speaker": "B",
+      "tag": "LIVE INTERRUPT",
+      "text": "Lucas, Bitcoin's Taproot upgrade already supports quantum-resistant signatures"
+    },
+    {
+      "speaker": "A",
+      "tag": "REALITY CHECK",
+      "text": "But Sophia, only 1% of Bitcoin wallets have upgraded to Taproot"
+    },
+    {
+      "speaker": "B",
+      "tag": "COUNTER-EVIDENCE",
+      "text": "Actually, Lucas, 50% of Bitcoin transactions now use quantum-safe Taproot"
+    },
+    {
+      "speaker": "A",
+      "tag": "FINAL VERDICT",
+      "text": "Will Bitcoin upgrade 100% before quantum computers arrive, or will it be too late?"
+    }
   ]
 }
